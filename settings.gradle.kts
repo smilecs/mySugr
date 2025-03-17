@@ -20,7 +20,7 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "template"
+rootProject.name = "mySugr"
 include(":app")
-include(":mylibrary")
+include(":logbook")
 include(":core")

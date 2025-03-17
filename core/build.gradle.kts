@@ -3,6 +3,8 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.ksp)
     alias(libs.plugins.hilt.android)
+    alias(libs.plugins.room)
+    alias(libs.plugins.kotlinx)
 }
 
 android {
@@ -32,16 +34,15 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+    room {
+        schemaDirectory("$projectDir/schemas")
+    }
 }
 
 dependencies {
+    api(libs.room)
+    api(libs.room.ktx)
     api(libs.hilt.android)
-    api(libs.retrofit)
-    api(libs.retrofit.moshi)
-    api(libs.okhttp.base)
-    api(libs.okhttp.log)
-    api(libs.moshi.kotlin)
-    api(libs.moshi.adapters)
     api(libs.androidx.core.ktx)
     api(libs.androidx.appcompat)
 
@@ -51,5 +52,5 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
 
     ksp(libs.hilt.compiler)
-    ksp(libs.moshi.codegen)
+    ksp(libs.room.compiler)
 }
